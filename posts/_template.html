@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<!--
+  ============================================================
+  BLOG POST TEMPLATE — Hub Solutions Digital
+  ============================================================
+  How to use:
+  1. Copy this file to /posts/your-post-slug.html
+  2. Replace every {{PLACEHOLDER}} with your content
+  3. Build topic-specific visuals (stat cards, charts, comparison
+     blocks, query chips) where indicated — match the navy/amber
+     brand style and the topic of the article
+  4. Write 5 FAQs that are genuinely relevant to your title
+  5. Add the post to ../posts.json (newest first)
+  6. Commit and push
+  ============================================================
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>{{TITLE}} — Hub Solutions Digital</title>
+  <meta name="description" content="{{META_DESCRIPTION}}" />
+  <link rel="canonical" href="https://blog.hubsolutions.one/posts/{{SLUG}}.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="{{TITLE}}" />
+  <meta property="og:description" content="{{META_DESCRIPTION}}" />
+  <meta property="og:url" content="https://blog.hubsolutions.one/posts/{{SLUG}}.html" />
+  <meta property="og:image" content="https://blog.hubsolutions.one/images/{{THUMB}}" />
+  <meta property="article:published_time" content="{{ISO_DATE}}" />
+  <meta property="article:author" content="Susan" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- JSON-LD: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "{{TITLE}}",
+    "description": "{{META_DESCRIPTION}}",
+    "image": "https://blog.hubsolutions.one/images/{{THUMB}}",
+    "datePublished": "{{ISO_DATE}}",
+    "author": { "@type": "Person", "name": "Susan" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hub Solutions Digital",
+      "url": "https://hubsolutions.one"
+    },
+    "mainEntityOfPage": "https://blog.hubsolutions.one/posts/{{SLUG}}.html"
+  }
+  </script>
+
+  <!-- JSON-LD: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "{{Q1}}", "acceptedAnswer": { "@type": "Answer", "text": "{{A1}}" } },
+      { "@type": "Question", "name": "{{Q2}}", "acceptedAnswer": { "@type": "Answer", "text": "{{A2}}" } },
+      { "@type": "Question", "name": "{{Q3}}", "acceptedAnswer": { "@type": "Answer", "text": "{{A3}}" } },
+      { "@type": "Question", "name": "{{Q4}}", "acceptedAnswer": { "@type": "Answer", "text": "{{A4}}" } },
+      { "@type": "Question", "name": "{{Q5}}", "acceptedAnswer": { "@type": "Answer", "text": "{{A5}}" } }
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" />
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container row">
+      <a href="../index.html" class="wordmark">HUB SOLUTIONS<span>·</span>DIGITAL</a>
+      <nav class="nav">
+        <a href="https://hubsolutions.one">Home</a>
+        <a href="../index.html">Blog</a>
+        <a class="btn-amber" href="https://geo.hubsolutions.one">Get GEO Audit →</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="post-hero">
+    <div class="container read">
+      <span class="eyebrow fade-up">{{EYEBROW_LABEL}}</span>
+      <h1 class="fade-up d1">{{HEADLINE_WITH_<span class="hl">HIGHLIGHT</span>}}</h1>
+      <p class="sub fade-up d2">{{SUBLINE}}</p>
+      <div class="byline fade-up d3">
+        <span><strong>Susan</strong> · Author</span>
+        <span>{{HUMAN_DATE}}</span>
+        <span>{{READING_TIME}}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <article class="post-body">
+    <div class="container read">
+
+      <!-- SECTION 01 -->
+      <section class="section-block fade-up">
+        <div class="section-num"><span class="bar"></span>01</div>
+        <h2>{{SECTION_1_HEADING}}</h2>
+        <p>{{SECTION_1_PROSE}} Use <span class="hl">highlight spans</span> on key phrases.</p>
+
+        <!-- OPTIONAL: stat cards relevant to this section -->
+        <div class="stat-grid fade-up">
+          <div class="stat-card"><div class="num">{{STAT}}<span class="unit">%</span></div><div class="label">{{STAT_LABEL}}</div></div>
+          <div class="stat-card"><div class="num">{{STAT}}</div><div class="label">{{STAT_LABEL}}</div></div>
+          <div class="stat-card"><div class="num">{{STAT}}</div><div class="label">{{STAT_LABEL}}</div></div>
+        </div>
+      </section>
+
+      <!-- SECTION 02 -->
+      <section class="section-block fade-up">
+        <div class="section-num"><span class="bar"></span>02</div>
+        <h2>{{SECTION_2_HEADING}}</h2>
+        <p>{{PROSE}}</p>
+
+        <div class="pullquote">{{PULL_QUOTE}}</div>
+      </section>
+
+      <!-- SECTION 03 (with chart visual) -->
+      <section class="section-block fade-up">
+        <div class="section-num"><span class="bar"></span>03</div>
+        <h2>{{SECTION_3_HEADING}}</h2>
+        <p>{{PROSE}}</p>
+
+        <!-- OPTIONAL: chart visual -->
+        <div class="chart-card fade-up">
+          <div class="chart-title">
+            <h4>{{CHART_TITLE}}</h4>
+            <div class="legend"><span class="dot"></span>{{LEGEND}}</div>
+          </div>
+          <svg class="chart-svg" viewBox="0 0 700 240" preserveAspectRatio="none">
+            <defs>
+              <linearGradient id="amberFade" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#F5A623" stop-opacity="0.45"/>
+                <stop offset="1" stop-color="#F5A623" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <g stroke="rgba(255,255,255,0.08)">
+              <line x1="0" y1="60" x2="700" y2="60"/>
+              <line x1="0" y1="120" x2="700" y2="120"/>
+              <line x1="0" y1="180" x2="700" y2="180"/>
+            </g>
+            <!-- Replace point coords with your data -->
+            <path class="chart-area" d="M0 200 L100 180 L200 160 L300 130 L400 100 L500 70 L600 50 L700 30 L700 240 L0 240 Z"/>
+            <path class="chart-path" d="M0 200 L100 180 L200 160 L300 130 L400 100 L500 70 L600 50 L700 30"/>
+          </svg>
+        </div>
+      </section>
+
+      <!-- MID-ARTICLE CTA -->
+      <div class="cta-block fade-up">
+        <h3>{{MID_CTA_HEADLINE}}</h3>
+        <p>{{MID_CTA_SUB}}</p>
+        <a class="btn-amber" href="https://geo.hubsolutions.one">Get a free GEO audit →</a>
+      </div>
+
+      <!-- SECTION 04 (with comparison) -->
+      <section class="section-block fade-up">
+        <div class="section-num"><span class="bar"></span>04</div>
+        <h2>{{SECTION_4_HEADING}}</h2>
+        <p>{{PROSE}}</p>
+
+        <div class="compare">
+          <div class="compare-col left">
+            <h5>{{OLD_LABEL}}</h5>
+            <ul>
+              <li>{{POINT}}</li>
+              <li>{{POINT}}</li>
+              <li>{{POINT}}</li>
+            </ul>
+          </div>
+          <div class="compare-col right">
+            <h5>{{NEW_LABEL}}</h5>
+            <ul>
+              <li>{{POINT}}</li>
+              <li>{{POINT}}</li>
+              <li>{{POINT}}</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 05 (with query chips) -->
+      <section class="section-block fade-up">
+        <div class="section-num"><span class="bar"></span>05</div>
+        <h2>{{SECTION_5_HEADING}}</h2>
+        <p>{{PROSE}}</p>
+
+        <div class="chips-row">
+          <span class="chip"><span class="q">Q.</span>{{EXAMPLE_QUERY}}</span>
+          <span class="chip"><span class="q">Q.</span>{{EXAMPLE_QUERY}}</span>
+          <span class="chip"><span class="q">Q.</span>{{EXAMPLE_QUERY}}</span>
+        </div>
+
+        <div class="callout"><strong>Tip:</strong> {{CALLOUT_TEXT}}</div>
+      </section>
+
+      <!-- Add more numbered sections as needed -->
+
+      <!-- FAQ — must have exactly 5 items -->
+      <section class="faq-section fade-up">
+        <div class="section-num"><span class="bar"></span>FAQ</div>
+        <h2>Frequently asked questions</h2>
+        <div class="faq-list">
+          <details class="faq-item"><summary>{{Q1}}</summary><div class="ans">{{A1}}</div></details>
+          <details class="faq-item"><summary>{{Q2}}</summary><div class="ans">{{A2}}</div></details>
+          <details class="faq-item"><summary>{{Q3}}</summary><div class="ans">{{A3}}</div></details>
+          <details class="faq-item"><summary>{{Q4}}</summary><div class="ans">{{A4}}</div></details>
+          <details class="faq-item"><summary>{{Q5}}</summary><div class="ans">{{A5}}</div></details>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <div class="cta-block fade-up">
+        <h3>{{FINAL_CTA_HEADLINE}}</h3>
+        <p>{{FINAL_CTA_SUB}}</p>
+        <a class="btn-amber" href="https://geo.hubsolutions.one">Start your GEO audit →</a>
+      </div>
+
+      <!-- Related posts -->
+      <section class="related-section">
+        <h2>More from the blog</h2>
+        <div id="related-grid" class="related-grid"></div>
+      </section>
+
+    </div>
+  </article>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container row">
+      <div class="brand-line">HUB SOLUTIONS DIGITAL — built for businesses that want to win on AI search.</div>
+      <div><a href="https://hubsolutions.one">hubsolutions.one →</a></div>
+    </div>
+    <div class="container"><small>© <span id="year"></span> Hub Solutions Digital. All rights reserved.</small></div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---------- Scroll-in animation ----------
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up, .chart-card').forEach(el => io.observe(el));
+
+    // ---------- Related posts (newest 3, excluding current) ----------
+    const currentSlug = location.pathname.split('/').pop();
+    function fmtDate(iso){ return new Date(iso+'T00:00:00').toLocaleDateString('en-US',{year:'numeric',month:'short',day:'numeric'}); }
+    fetch('../posts.json', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(posts => {
+        const related = posts
+          .filter(p => !p.link.endsWith(currentSlug))
+          .sort((a,b) => a.date < b.date ? 1 : -1)
+          .slice(0, 3);
+        if (!related.length) {
+          document.getElementById('related-grid').innerHTML =
+            '<div class="post-empty">More posts coming soon.</div>';
+          return;
+        }
+        document.getElementById('related-grid').innerHTML = related.map(p => `
+          <a class="post-card" href="../${p.link}">
+            <div class="thumb">${p.thumbnail.endsWith('.svg')
+              ? `<object data="../${p.thumbnail}" type="image/svg+xml" style="pointer-events:none;width:100%;height:100%"></object>`
+              : `<img src="../${p.thumbnail}" alt="${p.title}" loading="lazy"/>`}</div>
+            <div class="body">
+              <div class="meta"><span>${fmtDate(p.date)}</span><span class="dot"></span><span>${p.readingTime||''}</span></div>
+              <h3>${p.title}</h3><p>${p.excerpt}</p>
+              <span class="read-more">Read article</span>
+            </div>
+          </a>`).join('');
+      })
+      .catch(() => {});
+  </script>
+</body>
+</html>

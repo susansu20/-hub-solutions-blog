@@ -1,0 +1,87 @@
+name: New blog post from issue
+
+# Fires when someone opens an issue with the "new-post" label
+# (the issue template applies this label automatically).
+on:
+  issues:
+    types: [opened, labeled]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  generate:
+    if: contains(github.event.issue.labels.*.name, 'new-post')
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Node 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate post with Claude
+        id: gen
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: node .github/scripts/generate-post.mjs
+
+      - name: Open pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: post/issue-${{ github.event.issue.number }}
+          base: main
+          commit-message: "Add new post (issue #${{ github.event.issue.number }})"
+          title: "📝 New post: ${{ steps.gen.outputs.post_title }}"
+          body: |
+            **Drafted from issue #${{ github.event.issue.number }}.**
+
+            **Slug:** `${{ steps.gen.outputs.slug }}`
+            **Reading time:** ${{ steps.gen.outputs.reading_time }}
+
+            ### Review checklist
+            - [ ] Headline and sub-line read well
+            - [ ] Visuals make sense for the topic
+            - [ ] 5 FAQs are genuinely relevant
+            - [ ] Both CTAs point to `geo.hubsolutions.one`
+            - [ ] No typos / brand voice OK
+
+            Merge this PR → Vercel deploys to `blog.hubsolutions.one`.
+
+            Closes #${{ github.event.issue.number }}
+          labels: |
+            new-post
+            needs-review
+          delete-branch: true
+
+      - name: Comment on the issue
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ Draft post created. Check the **Pull Requests** tab — the new post is waiting for review there.'
+            });
+
+      - name: Comment if it failed
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Sorry, the draft failed to generate. Check the [Actions tab](../../actions) for the error log, then re-open the issue to retry.'
+            });

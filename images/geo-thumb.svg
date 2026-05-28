@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" role="img" aria-label="GEO — Generative Engine Optimization">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#14224F"/>
+      <stop offset="1" stop-color="#1B2C6B"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.78" cy="0.28" r="0.55">
+      <stop offset="0" stop-color="#F5A623" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#F5A623" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1.5" cy="1.5" r="1.2" fill="#ffffff" opacity="0.08"/>
+    </pattern>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect width="800" height="450" fill="url(#dots)"/>
+  <rect width="800" height="450" fill="url(#glow)"/>
+
+  <!-- Eyebrow -->
+  <g transform="translate(60, 90)">
+    <rect width="100" height="22" rx="11" fill="none" stroke="#F5A623" stroke-opacity="0.55"/>
+    <text x="50" y="15" font-family="General Sans, sans-serif" font-size="10" font-weight="700" letter-spacing="2.4" fill="#F5A623" text-anchor="middle">GEO 101</text>
+  </g>
+
+  <!-- Headline -->
+  <text x="60" y="170" font-family="General Sans, sans-serif" font-size="44" font-weight="600" fill="#ffffff">7 things every</text>
+  <text x="60" y="220" font-family="General Sans, sans-serif" font-size="44" font-weight="600" fill="#ffffff">business owner</text>
+  <text x="60" y="270" font-family="General Sans, sans-serif" font-size="44" font-weight="600" fill="#ffffff">must know about</text>
+  <text x="60" y="320" font-family="General Sans, sans-serif" font-size="44" font-weight="700" fill="#F5A623">GEO.</text>
+
+  <!-- Decorative chart -->
+  <g transform="translate(500, 110)" opacity="0.95">
+    <path d="M0 180 L40 160 L80 165 L120 130 L160 105 L200 80 L240 40 L260 30"
+          fill="none" stroke="#F5A623" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="260" cy="30" r="6" fill="#F5A623"/>
+    <line x1="0" y1="200" x2="270" y2="200" stroke="#ffffff" stroke-opacity="0.15"/>
+    <line x1="0" y1="200" x2="0" y2="20" stroke="#ffffff" stroke-opacity="0.15"/>
+  </g>
+
+  <!-- Footer wordmark -->
+  <text x="60" y="400" font-family="General Sans, sans-serif" font-size="12" font-weight="600" letter-spacing="3" fill="#ffffff" opacity="0.6">HUB SOLUTIONS DIGITAL · BLOG</text>
+</svg>

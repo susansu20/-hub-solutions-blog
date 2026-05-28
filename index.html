@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hub Solutions Digital — Blog</title>
+  <meta name="description" content="Practical insights on GEO, AEO, AI search, and modern digital marketing — from the team at Hub Solutions Digital." />
+  <link rel="canonical" href="https://blog.hubsolutions.one/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Hub Solutions Digital — Blog" />
+  <meta property="og:description" content="Practical insights on GEO, AEO, AI search, and modern digital marketing." />
+  <meta property="og:url" content="https://blog.hubsolutions.one/" />
+  <meta property="og:image" content="https://blog.hubsolutions.one/images/geo-thumb.svg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container row">
+      <a href="/" class="wordmark">HUB SOLUTIONS<span>·</span>DIGITAL</a>
+      <nav class="nav">
+        <a href="https://hubsolutions.one">Home</a>
+        <a href="/">Blog</a>
+        <a class="btn-amber" href="https://geo.hubsolutions.one">Get GEO Audit →</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="home-hero">
+    <div class="container">
+      <span class="eyebrow fade-up">The Hub Solutions Blog</span>
+      <h1 class="fade-up d1">Ideas for the new era of <span class="hl">AI-first search.</span></h1>
+      <p class="fade-up d2">Practical playbooks on GEO, AEO, conversion, and modern marketing — written for business owners who need results, not jargon.</p>
+    </div>
+  </section>
+
+  <!-- Posts -->
+  <section class="posts-section">
+    <div class="container">
+      <div class="posts-head fade-up">
+        <div>
+          <h2>Latest Posts</h2>
+          <p>Newest first. Updated as we publish.</p>
+        </div>
+      </div>
+      <div id="post-grid" class="post-grid">
+        <div class="post-empty">Loading posts…</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container row">
+      <div class="brand-line">HUB SOLUTIONS DIGITAL — built for businesses that want to win on AI search.</div>
+      <div><a href="https://hubsolutions.one">hubsolutions.one →</a></div>
+    </div>
+    <div class="container">
+      <small>© <span id="year"></span> Hub Solutions Digital. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // ---------- Render post cards from posts.json ----------
+    function formatDate(iso) {
+      const d = new Date(iso + 'T00:00:00');
+      return d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+    }
+
+    fetch('posts.json', { cache: 'no-store' })
+      .then(r => r.json())
+      .then(posts => {
+        const grid = document.getElementById('post-grid');
+        if (!posts.length) {
+          grid.innerHTML = '<div class="post-empty">No posts yet — check back soon.</div>';
+          return;
+        }
+        // newest first
+        posts.sort((a, b) => (a.date < b.date ? 1 : -1));
+        grid.innerHTML = posts.map(p => `
+          <a class="post-card fade-up" href="${p.link}">
+            <div class="thumb">
+              ${p.thumbnail.endsWith('.svg')
+                ? `<object data="${p.thumbnail}" type="image/svg+xml" style="pointer-events:none;width:100%;height:100%"></object>`
+                : `<img src="${p.thumbnail}" alt="${p.title}" loading="lazy"/>`
+              }
+            </div>
+            <div class="body">
+              <div class="meta">
+                <span>${formatDate(p.date)}</span>
+                <span class="dot"></span>
+                <span>${p.readingTime || ''}</span>
+              </div>
+              <h3>${p.title}</h3>
+              <p>${p.excerpt}</p>
+              <span class="read-more">Read article</span>
+            </div>
+          </a>
+        `).join('');
+        observeFadeUps();
+      })
+      .catch(err => {
+        document.getElementById('post-grid').innerHTML =
+          '<div class="post-empty">Could not load posts. Serve via a local server (or deploy to Vercel) so the browser can fetch posts.json.</div>';
+        console.error(err);
+      });
+
+    // ---------- Scroll-in animation ----------
+    function observeFadeUps() {
+      const els = document.querySelectorAll('.fade-up');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(el => io.observe(el));
+    }
+    observeFadeUps();
+  </script>
+</body>
+</html>

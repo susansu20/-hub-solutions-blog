@@ -1,0 +1,13 @@
+# Local dev preview config — not for the repo
+.claude/
+
+# macOS
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Node (only used by the GitHub Action runner, not locally)
+node_modules/

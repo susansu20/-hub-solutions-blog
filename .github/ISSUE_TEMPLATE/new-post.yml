@@ -1,0 +1,61 @@
+name: ✍️ Write a new blog post
+description: Type a title and an angle — Claude will draft the post and open a pull request for review.
+title: "[Post] "
+labels: ["new-post"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ### How this works
+        Fill in the fields below and click **Submit new issue**.
+        Within a few minutes, a draft pull request will appear with the new post HTML, a thumbnail, and an updated `posts.json`. Review it, click **Merge** — Vercel deploys automatically.
+
+  - type: input
+    id: title
+    attributes:
+      label: Blog post title
+      description: The headline as you want it to appear. Don't worry about SEO — Claude will optimize the meta tags.
+      placeholder: "7 reasons your homepage hero isn't converting"
+    validations:
+      required: true
+
+  - type: textarea
+    id: angle
+    attributes:
+      label: Topic / angle
+      description: 1–3 sentences. Who is this for, what's the main argument, and any specific points or examples to include.
+      placeholder: |
+        For B2B service businesses. Argue that most homepage heroes fail because they lead with what the company does instead of what the visitor wants. Include the rule of "result before process" and reference how Stripe and Linear do it.
+    validations:
+      required: true
+
+  - type: input
+    id: eyebrow
+    attributes:
+      label: Eyebrow label (optional)
+      description: The small tag above the headline. Defaults to something topical if you leave it blank.
+      placeholder: "Conversion · For B2B services"
+
+  - type: input
+    id: readingTime
+    attributes:
+      label: Reading time (optional)
+      description: Defaults to "6 min read" if blank.
+      placeholder: "6 min read"
+
+  - type: dropdown
+    id: visuals
+    attributes:
+      label: Preferred in-content visuals
+      description: Claude will use these to illustrate the post. Pick whatever fits the topic best — or leave the default.
+      multiple: true
+      options:
+        - Stat cards
+        - Animated line chart
+        - Comparison columns (old way vs. new way)
+        - Query chips
+        - Pull quote
+        - Callout block
+      default: 0
+    validations:
+      required: false
