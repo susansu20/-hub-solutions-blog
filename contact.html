@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>Contact Hub Solutions Digital — Multi-Award-Winning Digital Agency in Singapore</title>
+  <meta name="description" content="Work with Hub Solutions Digital — a multi-award-winning digital marketing agency in Singapore. Get in touch for SEO, GEO, web design, Shopify, and WordPress projects." />
+  <link rel="canonical" href="https://blog.hubsolutions.one/contact.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Contact Hub Solutions Digital — Award-winning digital agency Singapore" />
+  <meta property="og:description" content="Work with a multi-award-winning Singapore digital agency for SEO, GEO, web design, and Shopify/WordPress work." />
+  <meta property="og:url" content="https://blog.hubsolutions.one/contact.html" />
+  <meta property="og:image" content="https://blog.hubsolutions.one/images/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- JSON-LD: LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Hub Solutions Digital",
+    "image": "https://blog.hubsolutions.one/images/logo.png",
+    "url": "https://hubsolutions.one",
+    "telephone": "",
+    "email": "enquiry@hubsolutions.one",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "20 Sin Ming Lane, #08-66 Midview City",
+      "addressLocality": "Singapore",
+      "postalCode": "573968",
+      "addressCountry": "SG"
+    },
+    "areaServed": "SG",
+    "award": [
+      "Top Clutch Shopify SEO Company Singapore",
+      "Top Clutch WordPress SEO Company Singapore",
+      "Top Clutch User Experience Company Singapore",
+      "The Manifest Most Reviewed SEO Company Singapore",
+      "Top Web Design Company Singapore 2025"
+    ]
+  }
+  </script>
+
+  <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+  <link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=general-sans@400,500,600,700&display=swap" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container row">
+      <a href="index.html" class="wordmark">
+        <img src="images/logo.png" alt="Hub Solutions Digital — multi-award winning digital agency Singapore" class="logo-img" />
+      </a>
+      <nav class="nav">
+        <a href="https://hubsolutions.one">Home</a>
+        <a href="index.html">Blog</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn-amber" href="contact.html">Work with us →</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="contact-hero">
+    <div class="container">
+      <span class="eyebrow fade-up">Let's work together</span>
+      <h1 class="fade-up d1">Tell us about your project — we'll get back within <span class="hl">1 business day.</span></h1>
+      <p class="fade-up d2">A multi-award-winning Singapore digital agency. SEO, GEO, web design, Shopify, WordPress — whatever it takes to get your business found and converting.</p>
+    </div>
+  </section>
+
+  <!-- Awards strip -->
+  <section class="awards-strip">
+    <div class="container">
+      <div class="label">Recognised by <span>·</span> Clutch · The Manifest · Top Design Awards</div>
+      <div class="awards-grid">
+        <img src="images/award-clutch-shopify-seo.png" alt="Top Clutch Shopify SEO Company Singapore" loading="lazy" />
+        <img src="images/award-clutch-wordpress-seo.png" alt="Top Clutch WordPress SEO Company Singapore" loading="lazy" />
+        <img src="images/award-clutch-ux.png" alt="Top Clutch User Experience Company Singapore" loading="lazy" />
+        <img src="images/award-manifest-seo.png" alt="The Manifest Most Reviewed SEO Company Singapore" loading="lazy" />
+        <img src="images/award-web-design.png" alt="Top Web Design Company Singapore 2025" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact form + info -->
+  <section class="contact-section">
+    <div class="container">
+      <div class="contact-grid">
+
+        <!-- LEFT: Form -->
+        <div class="contact-form-card fade-up">
+          <h2>Send us a message</h2>
+          <p class="lead">All fields marked with <span style="color:#F5A623">*</span> are required. We reply within 1 working day.</p>
+
+          <!--
+            FORM HANDLING — IMPORTANT:
+            This form currently POSTs to a placeholder. To make it actually
+            deliver to enquiry@hubsolutions.one, do ONE of the following:
+
+            Option A — Formspree (recommended, ~2 min setup):
+              1. Sign up free at https://formspree.io
+              2. Create a new form, set its destination to enquiry@hubsolutions.one
+              3. Copy the form's endpoint URL (looks like https://formspree.io/f/xxxxxxxx)
+              4. Replace YOUR_FORMSPREE_ENDPOINT below
+
+            Option B — Web3Forms (no signup needed, free):
+              1. Go to https://web3forms.com
+              2. Get an access key for enquiry@hubsolutions.one
+              3. Change form action to https://api.web3forms.com/submit
+              4. Add <input type="hidden" name="access_key" value="YOUR_KEY">
+
+            Option C — Vercel serverless function (most control):
+              Build /api/contact.js — see README for the snippet.
+          -->
+          <form
+            class="contact-form"
+            id="contactForm"
+            action="https://formspree.io/f/YOUR_FORMSPREE_ENDPOINT"
+            method="POST">
+            <div class="field-row">
+              <div class="field">
+                <label for="name">Full name <span class="req">*</span></label>
+                <input type="text" id="name" name="name" required autocomplete="name" />
+              </div>
+              <div class="field">
+                <label for="company">Company name <span class="req">*</span></label>
+                <input type="text" id="company" name="company" required autocomplete="organization" />
+              </div>
+            </div>
+
+            <div class="field-row">
+              <div class="field">
+                <label for="email">Email <span class="req">*</span></label>
+                <input type="email" id="email" name="email" required autocomplete="email" />
+              </div>
+              <div class="field">
+                <label for="phone">Phone number <span class="req">*</span></label>
+                <input type="tel" id="phone" name="phone" required autocomplete="tel" placeholder="+65 …" />
+              </div>
+            </div>
+
+            <div class="field">
+              <label for="services">What services are you looking for? <span class="req">*</span></label>
+              <select id="services" name="services" required>
+                <option value="">— Please choose —</option>
+                <option>SEO</option>
+                <option>GEO (Generative Engine Optimization)</option>
+                <option>Web design / development</option>
+                <option>Shopify SEO / store build</option>
+                <option>WordPress SEO / site build</option>
+                <option>UX / UI design</option>
+                <option>Content / blog strategy</option>
+                <option>Not sure yet — please advise</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="issue">What problem are you trying to solve right now? <span class="req">*</span></label>
+              <textarea id="issue" name="issue" required placeholder="e.g. We're not ranking on Google, our Shopify store has low conversion, our site is outdated…"></textarea>
+            </div>
+
+            <div class="field">
+              <label for="message">Anything else you'd like us to know? (optional)</label>
+              <textarea id="message" name="message" placeholder="Budget range, timeline, links to your current site, etc."></textarea>
+            </div>
+
+            <!-- Honeypot field — bots fill it, humans don't see it -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off" />
+            <!-- Customize the Formspree subject line -->
+            <input type="hidden" name="_subject" value="New enquiry from blog.hubsolutions.one" />
+
+            <div class="form-status" id="formStatus"></div>
+
+            <button type="submit">Send message →</button>
+            <div class="form-note">Or email us directly at <a href="mailto:enquiry@hubsolutions.one">enquiry@hubsolutions.one</a></div>
+          </form>
+        </div>
+
+        <!-- RIGHT: Contact info + map -->
+        <div class="contact-info fade-up d1">
+          <h2>Visit or reach us directly</h2>
+
+          <div class="info-block">
+            <div class="lbl">Office</div>
+            <div class="val">
+              20 Sin Ming Lane, #08-66<br/>
+              Midview City, Singapore 573968
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="lbl">Email</div>
+            <div class="val">
+              <a href="mailto:enquiry@hubsolutions.one">enquiry@hubsolutions.one</a>
+            </div>
+          </div>
+
+          <div class="info-block">
+            <div class="lbl">Working hours</div>
+            <div class="val">Monday – Friday, 9am – 6pm SGT</div>
+          </div>
+
+          <div class="map-card">
+            <iframe
+              title="Hub Solutions Digital — Midview City, Singapore"
+              src="https://maps.google.com/maps?q=20%20Sin%20Ming%20Lane%20%2308-66%20Midview%20City%20Singapore%20573968&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen></iframe>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container row">
+      <div class="brand-line">HUB SOLUTIONS DIGITAL — multi-award winning digital agency in Singapore.</div>
+      <div><a href="https://hubsolutions.one">hubsolutions.one →</a></div>
+    </div>
+    <div class="container">
+      <div class="footer-awards">
+        <img src="images/award-clutch-shopify-seo.png" alt="Clutch — Top Shopify SEO Company Singapore" loading="lazy" />
+        <img src="images/award-clutch-wordpress-seo.png" alt="Clutch — Top WordPress SEO Company Singapore" loading="lazy" />
+        <img src="images/award-clutch-ux.png" alt="Clutch — Top UX Company Singapore" loading="lazy" />
+        <img src="images/award-manifest-seo.png" alt="The Manifest — Most Reviewed SEO Singapore" loading="lazy" />
+        <img src="images/award-web-design.png" alt="Top Web Design Company Singapore 2025" loading="lazy" />
+      </div>
+      <small>© <span id="year"></span> Hub Solutions Digital. 20 Sin Ming Lane #08-66, Midview City, Singapore 573968 · enquiry@hubsolutions.one · All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll-in animation
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in-view'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+
+    // Form submit — uses fetch so we can show a success state without leaving the page.
+    // Works with Formspree (and Web3Forms) out of the box.
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', async (e) => {
+      // If the action is still the placeholder, fall back to a mailto so it still works.
+      if (form.action.includes('YOUR_FORMSPREE_ENDPOINT')) {
+        e.preventDefault();
+        const data = new FormData(form);
+        const body = [...data.entries()]
+          .filter(([k]) => !k.startsWith('_'))
+          .map(([k, v]) => `${k}: ${v}`)
+          .join('\n');
+        location.href = `mailto:enquiry@hubsolutions.one?subject=${encodeURIComponent('New enquiry from blog.hubsolutions.one')}&body=${encodeURIComponent(body)}`;
+        return;
+      }
+
+      e.preventDefault();
+      status.className = 'form-status';
+      status.textContent = '';
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        });
+        if (res.ok) {
+          status.className = 'form-status success';
+          status.textContent = '✅ Thanks! Your message is in — we\'ll reply within 1 working day.';
+          form.reset();
+        } else {
+          throw new Error('Submission failed');
+        }
+      } catch (err) {
+        status.className = 'form-status error';
+        status.innerHTML = '❌ Something went wrong. Please email us directly at <a href="mailto:enquiry@hubsolutions.one">enquiry@hubsolutions.one</a>.';
+      }
+    });
+  </script>
+</body>
+</html>
