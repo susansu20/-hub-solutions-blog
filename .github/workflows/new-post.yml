@@ -4,7 +4,7 @@ name: New blog post from issue
 # (the issue template applies this label automatically).
 on:
   issues:
-    types: [opened, labeled]
+    types: [opened, labeled, reopened]
 
 permissions:
   contents: write
@@ -13,7 +13,11 @@ permissions:
 
 jobs:
   generate:
-    if: contains(github.event.issue.labels.*.name, 'new-post')
+    # Match either the label OR the [Post] title prefix, so it works even
+    # if labels are applied after the issue is created.
+    if: >-
+      contains(github.event.issue.labels.*.name, 'new-post') ||
+      startsWith(github.event.issue.title, '[Post]')
     runs-on: ubuntu-latest
 
     steps:
