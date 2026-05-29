@@ -1,5 +1,14 @@
 [
   {
+    "slug": "7-reasons-you-should-consider-headless-cms",
+    "title": "7 reasons you should consider Headless CMS",
+    "date": "2026-05-29",
+    "excerpt": "Traditional CMSs lock content inside templates. Headless CMSs free it to flow everywhere — websites, apps, AI engines, voice assistants. Here's why that matters for your business.",
+    "thumbnail": "images/7-reasons-you-should-consider-headless-cms-thumb.svg",
+    "readingTime": "4 min read",
+    "link": "posts/7-reasons-you-should-consider-headless-cms.html"
+  },
+  {
     "slug": "7-things-every-business-owner-must-know-about-geo",
     "title": "7 Things Every Business Owner Must Know About GEO",
     "date": "2026-05-28",
