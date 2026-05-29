@@ -191,7 +191,102 @@ config — it's a normal static site.
 
 ---
 
-## Deploying to Vercel + pointing `blog.hubsolutions.one`
+## Deploying — Vercel + Cloudways reverse proxy
+
+The blog lives at **`hubsolutions.one/blog/`** — a subfolder of the main domain
+for SEO benefit (subfolders inherit the parent domain's authority; subdomains
+don't).
+
+The architecture:
+
+```
+Visitor → hubsolutions.one/blog/...  →  Cloudways (Nginx) → reverse-proxy → Vercel static files
+```
+
+The blog is hosted on Vercel (fast, free, auto-deploys on every push). The main
+site on Cloudways simply forwards any request for `/blog/*` to Vercel. Google
+sees one unified site; you keep the simple deploy workflow.
+
+### Step 1 — Deploy the blog to Vercel
+
+1. Go to https://vercel.com → **Add New Project** → import the GitHub repo.
+2. Framework Preset: **Other** (no build step needed).
+3. **Deploy**. After ~30 seconds you'll get a URL like
+   `hub-solutions-blog-xxxxx.vercel.app`. Copy this URL — you'll need it for
+   Step 2.
+4. Test it: open the Vercel URL in your browser, confirm the blog renders.
+
+### Step 2 — Set up the Cloudways reverse proxy
+
+Goal: make `hubsolutions.one/blog/...` serve the Vercel files.
+
+1. **Log in to Cloudways** → open your application (the main `hubsolutions.one` app).
+2. **Application Settings → Nginx** (sometimes labelled "Vary" or "Manage Application Settings").
+   - On the Starter plan this lives under a slightly different menu — if you
+     can't find it, contact Cloudways support; they'll point you to the
+     correct file (usually `/etc/nginx/sites-available/<app>.conf`).
+3. Paste this `location` block **above** any existing PHP/WordPress location blocks:
+
+   ```nginx
+   # === Hub Solutions Blog — reverse proxy to Vercel ===
+   location ^~ /blog/ {
+       proxy_pass https://YOUR-VERCEL-URL.vercel.app/;
+       proxy_http_version 1.1;
+       proxy_set_header Host YOUR-VERCEL-URL.vercel.app;
+       proxy_set_header X-Real-IP $remote_addr;
+       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+       proxy_set_header X-Forwarded-Proto https;
+       proxy_ssl_server_name on;
+       proxy_intercept_errors on;
+       proxy_redirect off;
+   }
+
+   # Optional: send /blog (no trailing slash) to /blog/
+   location = /blog {
+       return 301 /blog/;
+   }
+   ```
+
+   Replace **both occurrences** of `YOUR-VERCEL-URL` with the actual subdomain
+   from Step 1 (e.g. `hub-solutions-blog-xxxxx`).
+
+4. **Save** → Cloudways reloads Nginx automatically (or click "Restart Nginx").
+5. **Test**: open `https://hubsolutions.one/blog/` in a fresh browser tab.
+   You should see the blog homepage. Click into the example post — that should
+   load at `https://hubsolutions.one/blog/posts/...html`.
+
+### Step 3 — Update Vercel project settings (one tweak)
+
+Since the blog is now served from the parent domain via reverse proxy, the
+canonical URL (`https://hubsolutions.one/blog/`) and not the Vercel URL is what
+Google indexes. We've already set the canonical tag in every HTML file, so
+nothing to change in code.
+
+**Optional but recommended**: in Vercel → Project Settings → Domains, *don't*
+add a custom domain. Leave the auto-generated `*.vercel.app` URL as the only
+domain. This way the Vercel URL itself isn't indexed (it's only used internally
+by your Cloudways proxy).
+
+### Troubleshooting
+
+- **404 on `/blog/posts/...html`** — Vercel needs the path to exactly match.
+  Check that `proxy_pass` ends with a trailing slash AND `/blog/` in the
+  location block also has a trailing slash. Both must match.
+- **Mixed content / HTTPS warnings** — make sure `X-Forwarded-Proto https` is
+  set; this tells the blog it's being served over HTTPS.
+- **Images broken** — confirm `proxy_redirect off;` is in the block, otherwise
+  Vercel-side redirects can rewrite paths incorrectly.
+- **WordPress catches the path before Nginx does** — the `^~` prefix in
+  `location ^~ /blog/` tells Nginx "match this prefix and stop looking",
+  which beats the default WordPress catch-all. If WordPress still hijacks
+  `/blog/`, ask Cloudways support to add the rule directly to the
+  server-level config (not the app-level).
+
+---
+
+## (Legacy) Deploying with a `blog.` subdomain
+
+This is the older approach — not recommended for SEO, kept here as reference.
 
 1. **Create a Vercel project** linked to this GitHub repo.
    - Framework preset: **Other** (it's a static site).

@@ -114,7 +114,7 @@ strengthen local SEO. Do NOT force it on globally-relevant topics.
 - Related posts section (rendered by client JS — leave the markup as-is).
 
 # Required SEO + schema
-- <title>, <meta description>, canonical URL = https://blog.hubsolutions.one/posts/<slug>.html
+- <title>, <meta description>, canonical URL = https://hubsolutions.one/blog/posts/<slug>.html
 - Open Graph tags (og:type=article, og:title, og:description, og:url, og:image).
 - JSON-LD Article schema with headline, description, image, datePublished, author "Susan", publisher Hub Solutions Digital.
 - JSON-LD FAQPage schema — the 5 questions MUST match the 5 in the <details> accordion verbatim.
